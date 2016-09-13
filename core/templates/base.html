@@ -26,11 +26,11 @@
               <a href="{% url 'index' %}">Início</a>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'product_list' %}" id="download">Categorias <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:product_list' %}" id="download">Categorias <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="{% url 'product_list' %}">Notebooks</a></li>
-				<li><a href="{% url 'product_list' %}">Acessórios</a></li>
-				<li><a href="{% url 'product_list' %}">Celulares</a></li>
+								{% for category in categories  %}
+									<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+								{% endfor %}
               </ul>
             </li>
 			<li>
