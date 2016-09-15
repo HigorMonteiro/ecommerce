@@ -1,10 +1,11 @@
 from django.conf.urls import include, url
-
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from django.conf import settings
+from catalog import views as views_catalog
+from django.views.static import serve as serve_static
 
 from core import views
-from catalog import views as views_catalog
+
 admin.autodiscover()
 
 urlpatterns = [
