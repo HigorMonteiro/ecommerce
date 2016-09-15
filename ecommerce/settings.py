@@ -8,6 +8,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = []
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'nd7==7r@nng56warlj%wg*cam6)og84$uz6#4$$-*174b$o$ss'
 
