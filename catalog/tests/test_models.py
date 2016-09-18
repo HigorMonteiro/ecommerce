@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 
 from model_mommy import mommy
 
-from catalog.models import Category, Product
+from catalog.models import Product
 
 
 class CategoryTestCase(TestCase):
@@ -19,6 +19,7 @@ class CategoryTestCase(TestCase):
             reverse('catalog:category', kwargs={'slug': self.category.slug})
         )
 
+
 class ProducTestCase(TestCase):
 
     def setUp(self):
@@ -29,3 +30,4 @@ class ProducTestCase(TestCase):
             self.product.get_absolute_url(),
             reverse('catalog:product', kwargs={'slug': 'produto'})
         )
+

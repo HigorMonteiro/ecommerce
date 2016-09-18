@@ -5,10 +5,11 @@ from .models import Product, Category
 
 def product_list(request):
     context = {
-        "product_list": Product.objects.all()
+        'product_list': Product.objects.all()
     }
 
     return render(request, 'catalog/product_list.html', context)
+
 
 def category(request, slug):
     category = Category.objects.get(slug=slug)
@@ -17,6 +18,7 @@ def category(request, slug):
         'product_list': Product.objects.filter(category=category),
     }
     return render(request, 'catalog/category.html', context)
+
 
 def product(request, slug):
     product = Product.objects.get(slug=slug)
