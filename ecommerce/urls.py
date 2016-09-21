@@ -10,7 +10,6 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^contato/$', views.contact, name='contact'),
-    # url(r'^produto/$', views.product, name='product'),
     url(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     url(r'^admin/', include(admin.site.urls)),
 ]
