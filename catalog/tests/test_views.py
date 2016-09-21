@@ -25,9 +25,9 @@ class ProductTestCase(TestCase):
 
     def test_context(self):
         response = self.client.get(self.url)
-        self.assertTrue('product_list' in response.context)
-        product_list = response.context['product_list']
-        self.assertEquals(product_list.count(), 10)
+        self.assertTrue('products' in response.context)
+        product_list = response.context['products']
+        self.assertEquals(product_list.count(), 3)
 
 
 class CategoryTestCase(TestCase):

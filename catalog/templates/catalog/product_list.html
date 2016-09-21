@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load pagination %}
+
 {% block title %}
     Listagem de Produtos | {{ block.super }}
 {% endblock %}
@@ -9,19 +11,20 @@
     <h1>Produtos</h1>
 </div>
 <div class="row">
-    {% for product in product_list %}
+    {% for product in products %}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-            <a href="#">
+            <a href="{{ product.get_absolute_url }}">
                 <img src="http://placehold.it/350x250" alt="" />
             </a>
             <div class="caption">
                 <h3>{{ product }}</h3>
                 {{ product.description|linebreaks }}
-                <p><a href="#" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <p><a href="{{ product.get_absolute_url }}" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
+{% pagination request paginator page_obj %}
 {% endblock %}
