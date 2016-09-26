@@ -183,6 +183,10 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 
+# auth
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
 #conf banco de dados local
 
 try:
