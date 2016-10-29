@@ -2,16 +2,17 @@
 import os
 import dj_database_url
 
+from decouple import config
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
-# TEMPLATE_DEBUG = DEBUG
+DEBUG = config('DEBUG')
+
 ALLOWED_HOSTS = []
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'nd7==7r@nng56warlj%wg*cam6)og84$uz6#4$$-*174b$o$ss'
-
+SECRET_KEY = config('SECRET_KEY')
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -19,12 +20,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.%s' % config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT'),
+        'PASSWORD': config('DB_PASSWORD', default=''),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -187,9 +200,5 @@ DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
-#conf banco de dados local
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+
