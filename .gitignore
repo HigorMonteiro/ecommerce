@@ -63,5 +63,6 @@ target/
 db.sqlite3
 
 local_settings.py
-
+ecommerce/settings.ini
+*.ini
 .env/
