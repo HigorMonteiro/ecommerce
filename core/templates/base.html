@@ -8,6 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="stylesheet" href="{% static 'assets/bootstrap.min.css' %}" media="screen" />
 	<link rel="stylesheet" href="{% static 'assets/custom.min.css' %}" media="screen" />
+	<link rel="stylesheet" href="{% static 'assets/extra.css' %}" media="screen" />
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -28,26 +29,27 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:product_list' %}" id="download">Categorias <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-								{% for category in categories  %}
-									<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
-								{% endfor %}
+				{% for category in categories %}
+				<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+				{% endfor %}
               </ul>
             </li>
 			<li>
 				<a href="{% url 'contact' %}">Contato</a>
 			</li>
           </ul>
-					<ul class="nav navbar-nav navbar-right">
-					{% if user.is_authenticated %}
-					<li><a href="{% url 'logout' %}">Sair</a></li>
-					{% else %}
-					<li><a href="{% url 'login' %}">Entrar</a></li>
-					{% endif %}
-					</ul>
+          <ul class="nav navbar-nav navbar-right">
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'logout' %}">Sair</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}">Entrar</a></li>
+			<li><a href="{% url 'accounts:register' %}">Registro</a></li>
+			{% endif %}
+          </ul>
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container margin-top">
 		{% block container %}{% endblock %}
 		<footer>
 			<div class="row">
