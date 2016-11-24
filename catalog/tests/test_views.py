@@ -8,7 +8,7 @@ from model_mommy import mommy
 from catalog.models import Product, Category
 
 
-class ProductTestCase(TestCase):
+class ProductListTestCase(TestCase):
 
     def setUp(self):
         self.url = reverse('catalog:product_list')
@@ -28,13 +28,9 @@ class ProductTestCase(TestCase):
         self.assertTrue('products' in response.context)
         product_list = response.context['products']
         self.assertEquals(product_list.count(), 3)
+        paginator = response.context['paginator']
+        self.assertEquals(paginator.num_pages, 4)
 
-
-class CategoryTestCase(TestCase):
-
-    def setUp(self):
-        self.client = Client()
-        self.categorys = mommy.make('catalog.Category', _quantity=10)
-
-    def tearDown(self):
-        Category.objects.all().delete()
+    def test_page_not_found(self):
+        response = self.client.get('{}?page=5'.format(self.url))
+        self.assertEquals(response.status_code, 404)
