@@ -30,7 +30,7 @@ DATABASES = {
         'PORT': config('DB_PORT'),
         'PASSWORD': config('DB_PASSWORD', default=''),
     }
-# }
+}
 #
 # DATABASES = {
 #     'default': {
