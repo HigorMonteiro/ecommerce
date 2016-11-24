@@ -30,8 +30,8 @@ DATABASES = {
         'PORT': config('DB_PORT'),
         'PASSWORD': config('DB_PASSWORD', default=''),
     }
-}
-
+# }
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -143,7 +143,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'widget_tweaks',
-
+    #APPS
+    'checkout',
     'core',
     'catalog',
     'accounts',
@@ -207,4 +208,3 @@ AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.ModelBackend',
         'accounts.backends.ModelBackend',
 )
-
