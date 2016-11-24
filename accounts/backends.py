@@ -1,3 +1,4 @@
+# coding=utf-8
 
 from django.contrib.auth.backends import ModelBackend as BaseModelBackend
 
@@ -14,4 +15,3 @@ class ModelBackend(BaseModelBackend):
                     return user
             except User.DoesNotExist:
                 pass
-

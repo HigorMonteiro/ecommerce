@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import re
 
 from django.db import models
@@ -6,6 +8,7 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager, Permission
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+
     username = models.CharField(
         'Apelido / Usuário', max_length=30, unique=True, validators=[
             validators.RegexValidator(
@@ -15,8 +18,7 @@ class User(AbstractBaseUser, PermissionsMixin):
                 'e os caracteres: @/./+/-/_ .'
                 , 'invalid'
             )
-        ], help_text=""" Um nome curto que será usado para
-        identificá-lo de forma única na plataforma"""
+        ], help_text='Um nome curto que será usado para identificá-lo de forma única na plataforma'
     )
     name = models.CharField('Nome', max_length=100, blank=True)
     email = models.EmailField('E-mail', unique=True)
@@ -31,7 +33,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = 'Usuário'
-        verbose_name_plural = 'Usuário'
+        verbose_name_plural = 'Usuários'
 
     def __str__(self):
         return self.name or self.username
@@ -41,4 +43,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return str(self).split(" ")[0]
-
