@@ -1,4 +1,4 @@
-# Registro de Produtos
+# E-commerce 
 
 Python 3.5 e Django 1.10
 
