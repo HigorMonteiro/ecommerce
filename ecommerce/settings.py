@@ -20,24 +20,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.%s' % config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT'),
-        'PASSWORD': config('DB_PASSWORD', default=''),
-    }
-}
 #
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.%s' % config('DB_ENGINE'),
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'HOST': config('DB_HOST', default='localhost'),
+#         'PORT': config('DB_PORT'),
+#         'PASSWORD': config('DB_PASSWORD', default=''),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Local time zone for this installation. Choices can be found here:
