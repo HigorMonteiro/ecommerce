@@ -28,7 +28,6 @@ siga o passo a passo.
 4. Instale as dependências.
 5. Configure a instância com o .env
 6. Configure o banco de dados de sua preferencia no settings.ini
-7. Execute o command para popular o banco de dados.
 
 ```bash
 $ git clone https://github.com/HigorMonteiro/ecommerce
