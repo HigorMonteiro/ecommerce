@@ -7,12 +7,12 @@ from decouple import config
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = config('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', '123')
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
