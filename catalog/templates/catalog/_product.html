@@ -1,8 +1,13 @@
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
         <a href="{{ product.get_absolute_url }}">
+          {% if product.image %}
+
+          <img src="{{ product.image.url }}" alt="" />
+          {% else %}
             <img src="http://placehold.it/350x250" alt="" />
-        </a>
+          {% endif %} 
+          </a>
         <div class="caption">
             <h3>{{ product }}</h3>
             {{ product.description|linebreaks }}
