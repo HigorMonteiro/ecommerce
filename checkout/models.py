@@ -47,7 +47,8 @@ class OrderManager(models.Manager):
         order = self.create(user=user)
         for cart_item in cart_items:
             order_item = OrderItem.objects.create(
-                order=order, quantity=cart_item.quantity, product=cart_item.product,
+                order=order, quantity=cart_item.quantity,
+                product=cart_item.product,
                 price=cart_item.price
             )
         return order
@@ -91,6 +92,15 @@ class Order(models.Model):
     def products(self):
         products_ids = self.items.values_list('product')
         return Product.objects.filter(pk__in=products_ids)
+
+    def total(self):
+        aggregate_queryset = self.items.aggregate(
+            total=models.Sum(
+                models.F('price') * models.F('quantity'),
+                output_field=models.DecimalField()
+            )
+        )
+        return aggregate_queryset['total']
 
 
 class OrderItem(models.Model):

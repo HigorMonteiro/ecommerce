@@ -27,7 +27,7 @@
         {% for order in object_list %}
         <tr>
             <td>
-                <a href="#">#{{ order.pk }}</a>
+                <a href="{% url 'checkout:order_detail' order.pk %}">#{{ order.pk }}</a>
             </td>
             <td>
                 {% for product in order.products %}
@@ -35,7 +35,7 @@
                 {% endfor %}
             </td>
             <td>
-                {{ order.status }}
+                {{ order.get_status_displa }}
             </td>
             <td>
                 {{ order.created|date:"d/m/y" }}
