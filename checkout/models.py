@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.conf import settings
+from catalog.models import Product
 
 
 class CartItemManager(models.Manager):
@@ -46,7 +47,8 @@ class OrderManager(models.Manager):
         order = self.create(user=user)
         for cart_item in cart_items:
             order_item = OrderItem.objects.create(
-                order=order, quantity=cart_item.quantity, product=cart_item.product,
+                order=order, quantity=cart_item.quantity,
+                product=cart_item.product,
                 price=cart_item.price
             )
         return order
@@ -87,10 +89,24 @@ class Order(models.Model):
     def __str__(self):
         return 'Pedido #{}'.format(self.pk)
 
+    def products(self):
+        products_ids = self.items.values_list('product')
+        return Product.objects.filter(pk__in=products_ids)
+
+    def total(self):
+        aggregate_queryset = self.items.aggregate(
+            total=models.Sum(
+                models.F('price') * models.F('quantity'),
+                output_field=models.DecimalField()
+            )
+        )
+        return aggregate_queryset['total']
+
 
 class OrderItem(models.Model):
 
-    order = models.ForeignKey(Order, verbose_name='Pedido', related_name='items')
+    order = models.ForeignKey(
+            Order, verbose_name='Pedido', related_name='items')
     product = models.ForeignKey('catalog.Product', verbose_name='Produto')
     quantity = models.PositiveIntegerField('Quantidade', default=1)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)

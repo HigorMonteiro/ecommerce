@@ -1,0 +1,48 @@
+{% extends "accounts/index.html" %}
+{% load pagination %}
+{% block title %}
+
+{% endblock %}
+
+{% block accounts_container %}
+<h1>Meus pedidos</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+               ID
+            </th>
+             <th>
+               Produtos
+            </th>
+            <th>
+               Situação
+            </th>
+            <th>
+               Data
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in object_list %}
+        <tr>
+            <td>
+                <a href="{% url 'checkout:order_detail' order.pk %}">#{{ order.pk }}</a>
+            </td>
+            <td>
+                {% for product in order.products %}
+                {{ product.name }}{% if not forloop.last %}<br/>{% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {{ order.get_status_displa }}
+            </td>
+            <td>
+                {{ order.created|date:"d/m/y" }}
+            </td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% pagination request paginator page_obj %}
+{% endblock %}
