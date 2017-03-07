@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.http import HttpResponse
 
 from catalog.models import Product
 
