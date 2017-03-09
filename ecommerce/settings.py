@@ -170,11 +170,11 @@ MESSAGE_TAGS = {
 }
 
 PAGSEGURO_TOKEN = ''
-PAGSEGURO_EMAIL = 'contato@gilenofilho.com.br'
+PAGSEGURO_EMAIL = 'higor.tecinfor@gmail.com'
 PAGSEGURO_SANDBOX = True
 
 PAYPAL_TEST = True
-PAYPAL_EMAIL = 'contato@gilenofilho.com.br'
+PAYPAL_EMAIL = 'higor.tecinfor@gmail.com'
 
 try:
     from .local_settings import *
