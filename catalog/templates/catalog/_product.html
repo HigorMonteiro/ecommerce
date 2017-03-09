@@ -6,11 +6,11 @@
           <img src="{{ product.image.url }}" alt="" />
           {% else %}
             <img src="http://placehold.it/350x250" alt="" />
-          {% endif %} 
+          {% endif %}
           </a>
         <div class="caption">
             <h3>{{ product }}</h3>
-            {{ product.description|linebreaks }}
+            {{ product.description|linebreaks|truncatechars_html:200 }}
             <p><a href="{{ product.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a> <a href="{% url 'checkout:create_cartitem' product.slug %}" class="btn btn-default" role="button">Adicionar</a></p>
         </div>
     </div>
