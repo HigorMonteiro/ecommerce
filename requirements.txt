@@ -21,3 +21,4 @@ whitenoise==3.2
 xmltodict==0.10.2
 psycopg2==2.6.1
 django-paypal==0.3.3
+easy-thumbnails==2.3
