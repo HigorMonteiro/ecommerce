@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # libs
     'paypal.standard.ipn',
     'widget_tweaks',
+    'easy_thumbnails',
     # apps
     'core',
     'accounts',
@@ -180,6 +181,13 @@ PAGSEGURO_SANDBOX = True
 PAYPAL_TEST = True
 PAYPAL_EMAIL = 'higor.tecinfor@gmail.com'
 
+# Thumbnails
+THUMBNAIL_ALIASES = {
+    '': {
+        'product_image': {'size': (385, 160), 'crop': True},
+        'product_detail': {'size': (350, 250), 'crop': True},
+    },
+}
 try:
     from .local_settings import *
 except ImportError:
