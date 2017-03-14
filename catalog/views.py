@@ -2,20 +2,26 @@
 
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from watson import search as watson
 
 from .models import Product, Category
 
 
 class ProductListView(generic.ListView):
 
-    model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'products'
     paginate_by = 3
 
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = watson.filter(queryset, q)
+        return queryset
+
 
 product_list = ProductListView.as_view()
-
 
 class CategoryListView(generic.ListView):
 

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'widget_tweaks',
     'easy_thumbnails',
+    'watson',
     # apps
     'core',
     'accounts',
