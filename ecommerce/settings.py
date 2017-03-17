@@ -189,6 +189,15 @@ THUMBNAIL_ALIASES = {
         'product_detail': {'size': (350, 250), 'crop': True},
     },
 }
+
+# cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache',
+    }
+}
+
 try:
     from .local_settings import *
 except ImportError:
