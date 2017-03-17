@@ -10,7 +10,7 @@ Cadastro do código e nome do produto.
 
 ## Live Demo
 
-http://appecommerce.herokuapp.com/
+http://lojavirtal.herokuapp.com/
 
 ```bash
 login : admin
