@@ -1,4 +1,5 @@
 # coding=utf-8
+import logging
 
 from pagseguro import PagSeguro
 
@@ -25,10 +26,12 @@ from catalog.models import Product
 from .models import CartItem, Order
 
 
+logger = logging.getLogger('checkout.views')
 class CreateCartItemView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         product = get_object_or_404(Product, slug=self.kwargs['slug'])
+        logger.debug('Produto %s adicionado ao carrinho' % product)
         if self.request.session.session_key is None:
             self.request.session.save()
         cart_item, created = CartItem.objects.add_item(
