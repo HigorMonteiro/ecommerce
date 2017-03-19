@@ -177,7 +177,7 @@ MESSAGE_TAGS = {
     messages_constants.ERROR: 'danger',
 }
 
-PAGSEGURO_TOKEN = ''
+PAGSEGURO_TOKEN = 'D6EC51C63908419CB7E3E8A64F48628D'
 PAGSEGURO_EMAIL = 'higor.tecinfor@gmail.com'
 PAGSEGURO_SANDBOX = True
 
