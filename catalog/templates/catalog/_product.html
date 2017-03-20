@@ -12,7 +12,26 @@
         <div class="caption">
             <h3>{{ product }}</h3>
             {{ product.description|linebreaks|truncatechars_html:200 }}
-            <p><a href="{{ product.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a> <a href="{% url 'checkout:create_cartitem' product.slug %}" class="btn btn-default" role="button">Adicionar</a></p>
+            <p><a href="{{ product.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a>
+              <a href="{% url 'checkout:create_cartitem' product.slug %}" class="btn btn-default cart-item-add" role="button">Adicionar</a></p>
         </div>
     </div>
 </div>
+
+
+{% block scripts %}
+<script type="text/javascript">
+$(function(){
+    $('.cart-item-add').on('click', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            dataType: 'json',
+            success: function(data, textStatus, jqXHR){
+                alert(data.message);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
