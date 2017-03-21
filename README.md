@@ -2,11 +2,9 @@
 
 Python 3.5 e Django 1.10
 
-## Objetivo
+## Descrições do projeto 
 
-Sistema para controle de produtos com controle de acesso.
-
-Cadastro do código e nome do produto.
+Exemplo de um e-commerce, com dois Gateway de pagamento PAGSEGURO & PAYPAL .
 
 ## Live Demo
 
