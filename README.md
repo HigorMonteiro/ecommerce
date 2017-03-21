@@ -25,7 +25,7 @@ Siga o passo a passo:
 3. Ative o virtualenv;
 4. Instale as dependências;
 5. Configure a instância com o .env;
-6. Configure o banco de dados de sua preferencia no settings.ini.
+6. Configure o banco de dados local de sua preferencia no local_settings.py
 
 ```bash
 $ git clone https://github.com/HigorMonteiro/ecommerce
